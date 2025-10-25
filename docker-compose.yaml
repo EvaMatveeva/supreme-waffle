@@ -1,0 +1,36 @@
+services:
+  postgres:
+    image: postgres:15
+    container_name: dbt_postgres
+    restart: always
+    environment:
+      POSTGRES_USER: dbt_user
+      POSTGRES_PASSWORD: dbt_password
+      POSTGRES_DB: dbt_db
+    ports:
+      - "5432:5432"
+    volumes:
+      - pg_data:/var/lib/postgresql/data
+
+  dbt:
+    image: ghcr.io/dbt-labs/dbt-postgres:1.9.latest
+    platform: linux/amd64
+    container_name: dbt_runner
+    depends_on:
+      - postgres
+    working_dir: /usr/app
+    volumes:
+      - ./dbt:/usr/app       # Mount your dbt project
+    environment:
+      DBT_PROFILES_DIR: /usr/app/.dbt
+      # optional if you want to set env vars for your dbt profile.yml
+      DBT_USER: dbt_user
+      DBT_PASSWORD: dbt_password
+      DBT_HOST: postgres
+      DBT_PORT: 5432
+      DBT_DBNAME: dbt_db
+    entrypoint: [ "tail", "-f", "/dev/null" ]  # Keeps container running for interactive dbt use
+    # You can also override with `docker-compose run dbt run`
+
+volumes:
+  pg_data:
