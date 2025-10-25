@@ -8,7 +8,7 @@ sumup_postgres_profile:
       password: dbt_password
       port: 5432
       dbname: dbt_db
-      schema: analytics
+      schema: dbt
       threads: 4
 
 

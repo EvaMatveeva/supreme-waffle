@@ -79,8 +79,8 @@ seed-paths: ["raw_data"]
 #   <function-configs>
 
 seeds:
-  sumup:
-    data:
-      # +schema: raw
-      +database: raw
-      +quote_columns: false
+  +schema: raw
+#   sumup:
+#     +database: raw
+#     +quote_columns: false
+
