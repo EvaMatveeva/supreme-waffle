@@ -20,17 +20,17 @@ services:
       - postgres
     working_dir: /usr/app
     volumes:
-      - ./dbt:/usr/app       # Mount your dbt project
+      - ./dbt:/usr/app
     environment:
       DBT_PROFILES_DIR: /usr/app/.dbt
-      # optional if you want to set env vars for your dbt profile.yml
       DBT_USER: dbt_user
       DBT_PASSWORD: dbt_password
       DBT_HOST: postgres
       DBT_PORT: 5432
       DBT_DBNAME: dbt_db
-    entrypoint: [ "tail", "-f", "/dev/null" ]  # Keeps container running for interactive dbt use
-    # You can also override with `docker-compose run dbt run`
+    entrypoint: ["tail", "-f", "/dev/null"] # Keeps container running for interactive dbt use
+    ports:
+      - "8080:8080"
 
 volumes:
   pg_data:
