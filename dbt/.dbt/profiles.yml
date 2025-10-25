@@ -1,4 +1,4 @@
-sumup_postgres_profile:
+sumup_postgres:
   target: dev
   outputs:
     dev:

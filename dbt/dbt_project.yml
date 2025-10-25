@@ -2,7 +2,7 @@ name: sumup
 
 config-version: 2
 
-profile: sumup_postgres_profile
+profile: sumup_postgres
 
 
 # model-paths: [directorypath]
