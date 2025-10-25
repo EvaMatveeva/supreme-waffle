@@ -29,6 +29,12 @@ models:
         tests:
           - not_null
 
+      - name: category_name
+        description: "Category name of the product."
+        data_type: varchar
+        tests:
+          - not_null
+
       - name: amount_in_eur
         description: "Transaction amount in EUR."
         data_type: numeric

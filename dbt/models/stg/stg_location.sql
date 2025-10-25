@@ -1,5 +1,5 @@
 SELECT
-    MD5(CONCAT(address, city, country)) AS location_id,
+    MD5(CONCAT(address, '~', city, '~', country)) AS location_id,
     address,
     city,
     country

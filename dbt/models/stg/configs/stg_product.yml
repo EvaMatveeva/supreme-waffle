@@ -17,8 +17,8 @@ models:
         tests:
           - not_null
 
-      - name: category_name
-        description: "Category name of the product."
+      - name: product_name
+        description: "Name of the product."
         data_type: varchar
         tests:
           - not_null
