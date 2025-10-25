@@ -1,0 +1,22 @@
+version: 2
+
+models:
+  - name: stg_device
+    description: "Staging table for device data."
+    columns:
+      - name: id
+        description: "Unique ID of the device."
+        data_type: varchar
+        tests:
+          - not_null
+          - unique
+
+      - name: device_src_id
+        description: "Original device ID from the source table."
+        data_type: integer
+        tests:
+          - not_null
+
+      - name: type
+        description: "Device type."
+        data_type: int

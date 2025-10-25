@@ -1,0 +1,9 @@
+sources:
+  - name: dbt_raw
+    tables:
+      - name: device
+        description: "Devices raw data"
+      - name: store
+        description: "Stores raw data"
+      - name: transaction
+        description: "Transactions raw data"

@@ -1,0 +1,17 @@
+version: 2
+
+models:
+  - name: l_store_x_customer
+    description: "Link between stores and customers."
+    columns:
+      - name: store_id
+        description: "ID of the store linked to the customer."
+        data_type: varchar
+        tests:
+          - not_null
+
+      - name: customer_id
+        description: "ID of the customer."
+        data_type: varchar
+        tests:
+          - not_null

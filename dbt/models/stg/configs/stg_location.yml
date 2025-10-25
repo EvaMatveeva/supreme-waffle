@@ -1,0 +1,30 @@
+version: 2
+
+models:
+  - name: stg_location
+    description: "Staging table for location data. Source: stores."
+    columns:
+      - name: location_id
+        description: "Unique ID of the store location (MD5 of address, city, country)."
+        data_type: varchar
+        tests:
+          - not_null
+          - unique
+
+      - name: address
+        description: "Address."
+        data_type: varchar
+        tests:
+          - not_null
+
+      - name: city
+        description: "City."
+        data_type: varchar
+        tests:
+          - not_null
+
+      - name: country
+        description: "Country."
+        data_type: varchar
+        tests:
+          - not_null

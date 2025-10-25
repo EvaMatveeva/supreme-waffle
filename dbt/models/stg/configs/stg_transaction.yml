@@ -1,0 +1,62 @@
+version: 2
+
+models:
+  - name: stg_transaction
+    description: "Staging table for transaction data. IDs are hashed for privacy, card numbers are masked, CVV is excluded."
+    columns:
+      - name: id
+        description: "Unique transaction ID."
+        data_type: varchar
+        tests:
+          - not_null
+          - unique
+
+      - name: transaction_src_id
+        description: "Original transaction ID from the source table."
+        data_type: integer
+        tests:
+          - not_null
+
+      - name: device_id
+        description: "Device ID."
+        data_type: varchar
+        tests:
+          - not_null
+
+      - name: product_id
+        description: "Product ID."
+        data_type: varchar
+        tests:
+          - not_null
+
+      - name: amount_in_eur
+        description: "Transaction amount in EUR."
+        data_type: numeric
+        tests:
+          - not_null
+
+      - name: status
+        description: "Transaction status."
+        data_type: varchar
+        tests:
+          - not_null
+          - accepted_values:
+              values: ['accepted', 'cancelled', 'refused']
+
+      - name: card_masked
+        description: "Masked card number showing only the last 4 digits."
+        data_type: varchar
+        tests:
+          - not_null
+
+      - name: created_at
+        description: "Timestamp when the transaction was created."
+        data_type: timestamp
+        tests:
+          - not_null
+
+      - name: happened_at
+        description: "Timestamp when the transaction occurred."
+        data_type: timestamp
+        tests:
+          - not_null

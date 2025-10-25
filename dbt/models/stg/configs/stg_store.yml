@@ -1,0 +1,40 @@
+version: 2
+
+models:
+  - name: stg_store
+    description: "Staging table for store data."
+    columns:
+      - name: id
+        description: "Unique store ID."
+        data_type: varchar
+        tests:
+          - not_null
+          - unique
+
+      - name: store_src_id
+        description: "Original store ID from the source table."
+        data_type: integer
+        tests:
+          - not_null
+
+      - name: name
+        description: "Store name."
+        data_type: varchar
+        tests:
+          - not_null
+
+      - name: location_id
+        description: "Hashed location ID (MD5 of address, city, country)."
+        data_type: varchar
+        tests:
+          - not_null
+
+      - name: created_at
+        description: "Store creation timestamp."
+        data_type: timestamp
+        tests:
+          - not_null
+
+      - name: typology
+        description: "Store type."
+        data_type: varchar
