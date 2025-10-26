@@ -8,7 +8,7 @@
 
 #### Steps
 
-1. Start Docker containers (Postgres + DBT):
+1. Start Docker containers (Postgres + dbt):
 
 ```bash
 docker compose up -d
@@ -20,13 +20,13 @@ docker compose up -d
 docker exec -it dbt_postgres psql -U dbt_user -d dbt_db
 ```
 
-3. Access the DBT container:
+3. Access the dbt container:
 
 ```bash
 docker exec -it dbt_runner bash
 ```
 
-4. (Optional) Debug DBT:
+4. (Optional) Debug dbt:
 
 ```bash
 dbt debug
@@ -38,25 +38,25 @@ dbt debug
 dbt seed
 ```
 
-6. Run DBT models:
+6. Run dbt models:
 
 ```bash
 dbt run
 ```
 
-7. Generate DBT documentation:
+7. Generate dbt documentation:
 
 ```bash
 dbt docs generate
 ```
 
-8. Serve DBT documentation UI:
+8. Serve dbt documentation UI:
 
 ```bash
 dbt docs serve --host 0.0.0.0 --port 8080
 ```
 
-Access UI at [http://localhost:8080](http://localhost:8080)
+Access UI at [http://localhost:8080](http://localhost:8080).
 
 9. (Optional) Run tests:
 
@@ -77,19 +77,23 @@ dbt test --models <model_name>
 
 ---
 
-### Queries to answer this challenge questions are in `questions_and_answers.sql`.
+### Queries to answer this challenge questions are in the `questions_and_answers.sql` file.
 
 ---
 
 ### Design
 
-- **Database:** Postgres (default choice; not ideal for large-scale analytics).
+- **Database**
+  Postgres (default choice; not ideal for large-scale analytics).
 
-- **Data Warehouse Layers:**
+- **Data Warehouse Layers**
 
-  1. **Raw layer (`dbt_raw` schema):** Uploaded raw files.
+  1. **Raw layer (`dbt_raw` schema):** Uploaded raw files. I used dbt seed to upload those files, but in the real setup the data will be loaded from the source by the pipeline, so we won't need dbt seed, we can just reference those tables as sources instead.
   2. **Staging layer (`dbt_stg` schema):** Enriched, cleaned raw data. Snowflake schema.
   3. **Data Mart layer:** Denormalized data to answer analytical questions.
+
+- **Lineage Graph**
+  ![alt text](image.png)
 
 #### Notes
 
@@ -101,7 +105,7 @@ dbt test --models <model_name>
 
 ### Assumptions
 
-- Raw `.xlsx` files were converted to `.csv` to use DBT seeds. DBT is mainly for transformations, not raw uploads.
+- Raw `.xlsx` files were converted to `.csv` to use dbt seeds. dbt is mainly for transformations, not raw uploads.
 - `category_name` in `transaction` relates to the transaction (generated field).
 - No `dim_location` table; assume 1:1 relation between address and store to reduce joins.
 - Some store transactions appear before store creation due to generated data; negative values may appear in metrics like "Average time for a store to perform first 5 transactions."
@@ -110,7 +114,7 @@ dbt test --models <model_name>
 
 ### Ideas for the Future
 
-- Schedule DBT runs with Airflow.
+- Schedule dbt runs with Airflow.
 - Expand documentation.
 - Enrich the database with additional data sources.
 - Implement SCD2 (or other historical tracking) for trend analysis.
