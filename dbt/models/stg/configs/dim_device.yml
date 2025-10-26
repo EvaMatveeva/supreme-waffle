@@ -1,11 +1,11 @@
 version: 2
 
 models:
-  - name: stg_device
+  - name: dim_device
     description: "Staging table for device data."
     columns:
       - name: id
-        description: "Unique ID of the device."
+        description: "Unique ID of the device. PK."
         data_type: varchar
         tests:
           - not_null
@@ -20,3 +20,13 @@ models:
       - name: type
         description: "Device type."
         data_type: int
+
+      - name: store_id
+        description: "ID of the store linked to the device. FK."
+        data_type: varchar
+        tests:
+          - not_null
+
+    tags:
+      - DIM
+      - device

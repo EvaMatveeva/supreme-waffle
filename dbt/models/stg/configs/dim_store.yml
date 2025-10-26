@@ -1,11 +1,11 @@
 version: 2
 
 models:
-  - name: stg_store
+  - name: dim_store
     description: "Staging table for store data."
     columns:
       - name: id
-        description: "Unique store ID."
+        description: "Unique ID of the store. PK."
         data_type: varchar
         tests:
           - not_null
@@ -23,8 +23,16 @@ models:
         tests:
           - not_null
 
-      - name: location_id
-        description: "Hashed location ID (MD5 of address, city, country)."
+      - name: address
+        description: "Store address."
+        data_type: varchar
+
+      - name: city
+        description: "Store city."
+        data_type: varchar
+
+      - name: country
+        description: "Store country."
         data_type: varchar
         tests:
           - not_null
@@ -38,3 +46,11 @@ models:
       - name: typology
         description: "Store type."
         data_type: varchar
+
+      - name: customer_id
+        description: "ID of the customer. FK."
+        data_type: varchar
+
+    tags:
+      - DIM
+      - store

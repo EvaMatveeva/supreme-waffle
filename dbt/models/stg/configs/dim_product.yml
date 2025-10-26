@@ -1,11 +1,11 @@
 version: 2
 
 models:
-  - name: stg_product
+  - name: dim_product
     description: "Staging table for product data."
     columns:
       - name: id
-        description: "Unique product ID (MD5 hash of product_sku and product_name)."
+        description: "Unique ID of the product. PK."
         data_type: varchar
         tests:
           - not_null
@@ -22,3 +22,7 @@ models:
         data_type: varchar
         tests:
           - not_null
+
+    tags:
+      - DIM
+      - product

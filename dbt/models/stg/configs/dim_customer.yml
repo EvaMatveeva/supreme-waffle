@@ -1,0 +1,19 @@
+version: 2
+
+models:
+  - name: dim_customer
+    description: "Staging table for customer data."
+    columns:
+      - name: id
+        description: "Unique ID of the customer. PK."
+        data_type: varchar
+        tests:
+          - not_null
+
+      - name: customer_src_id
+        description: "Original ID of the customer."
+        data_type: varchar
+
+    tags:
+      - DIM
+      - customer
