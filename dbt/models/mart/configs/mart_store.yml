@@ -56,6 +56,11 @@ models:
       - name: days_to_any_5th_transaction_happened
         description: "Days between store creation and fifth transaction of any type haappend."
         data_type: integer
+
+      - name: accepted_transaction_cnt
+        description: "Total number of accepted transactions for the product."
+        data_type: integer
+
     tags:
       - MART
       - store

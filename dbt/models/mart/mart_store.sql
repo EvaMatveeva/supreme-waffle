@@ -1,6 +1,7 @@
 WITH store_amounts AS (
     SELECT
         store_id,
+        COUNT(*) AS accepted_transaction_cnt,
         SUM(amount_in_eur) AS total_amount_in_eur,
         SUM(
             CASE
@@ -91,7 +92,11 @@ SELECT
         s_t_all_5.happened_at
     ) - DATE(
         s.created_at
-    ) AS days_to_any_5th_transaction_happened
+    ) AS days_to_any_5th_transaction_happened,
+    COALESCE(
+        accepted_transaction_cnt,
+        0
+    ) AS accepted_transaction_cnt
 FROM
     {{ ref('dim_store') }}
     s
