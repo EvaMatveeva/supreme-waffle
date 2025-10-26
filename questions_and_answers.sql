@@ -156,12 +156,12 @@ ORDER BY
 -- Another appproach
     WITH pre AS (
         SELECT
-            TYPE,
+            type,
             SUM(accepted_transaction_cnt) AS accepted_transaction_cnt
         FROM
             dbt.mart_device
         GROUP BY
-            TYPE
+            type
     )
 SELECT
     type,
