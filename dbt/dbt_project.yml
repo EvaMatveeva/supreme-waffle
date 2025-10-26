@@ -10,7 +10,13 @@ seed-paths: ["raw_data"]
 
 models:
   sumup:
-    +materialized: table
+    stg:
+      +schema: stg
+      +materialized: table
+    mart:
+      +materialized: table
+
+
 
 seeds:
   sumup:
