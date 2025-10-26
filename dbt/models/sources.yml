@@ -3,7 +3,22 @@ sources:
     tables:
       - name: device
         description: "Devices raw data"
+        columns:
+            - name: id
+              data_tests:
+                - unique
+                - not_null
       - name: store
         description: "Stores raw data"
+        columns:
+            - name: id
+              data_tests:
+                - unique
+                - not_null
       - name: transaction
         description: "Transactions raw data"
+        columns:
+            - name: id
+              data_tests:
+                - unique
+                - not_null
