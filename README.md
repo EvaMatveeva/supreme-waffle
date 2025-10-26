@@ -79,6 +79,8 @@ dbt test --models <model_name>
 
 ### Queries to answer this challenge questions are in the `questions_and_answers.sql` file.
 
+You can run the queries using any SQL client tool (e.g., DBeaver). To connect to the database, use the credentials specified in the `profiles.yml` file.
+
 ---
 
 ### Design
@@ -93,11 +95,11 @@ dbt test --models <model_name>
   3. **Data Mart layer:** Denormalized data to answer analytical questions.
 
 - **Lineage Graph**
-  ![alt text](image.png)
+  ![alt text](lineage_graph.png)
 
 #### Notes
 
-- Sensitive data (e.g., card information) is masked.
+- Sensitive data (e.g., card information) is masked. The CVV field is excluded from the model, as it’s unlikely to be needed for analytics. since it probably won't be used for analytics. 
 - Added tests for unique and not null fields.
 - `dim_customer` table added for customer analysis.
 
