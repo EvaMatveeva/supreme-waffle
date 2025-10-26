@@ -1,0 +1,61 @@
+version: 2
+
+models:
+  - name: mart_store
+    description:
+      Store-level mart combining store metadata, location info, and transactional metrics.
+      Includes funnel timing and revenue aggregates.
+    columns:
+      - name: id
+        description: "Unique ID of the store."
+        data_type: varchar
+        tests:
+          - not_null
+          - unique
+
+      - name: store_name
+        description: "Name of the store."
+        data_type: varchar
+
+      - name: created_at
+        description: "Store creation timestamp."
+        data_type: timestamp
+
+      - name: typology
+        description: "Store typology."
+        data_type: varchar
+
+      - name: country
+        description: "Country where the store is located."
+        data_type: varchar
+
+      - name: total_amount_in_eur
+        description: "Total accepted transaction amount across all time (in EUR)."
+        data_type: numeric
+
+      - name: last_30d_amount_in_eur
+        description: "Accepted transaction amount in the last 30 days (in EUR)."
+        data_type: numeric
+
+      - name: days_to_1st_transaction_happened
+        description: "Days between store creation and first accepted transaction happened."
+        data_type: integer
+
+      - name: days_to_5th_transaction_happened
+        description: "Days between store creation and fifth accepted transaction happpened."
+        data_type: integer
+
+      - name: days_to_1st_transaction_created
+        description: "Days between store creation and first accepted transaction created."
+        data_type: integer
+
+      - name: days_to_5th_transaction_created
+        description: "Days between store creation and fifth accepted transaction created."
+        data_type: integer
+
+      - name: days_to_any_5th_transaction_happened
+        description: "Days between store creation and fifth transaction of any type haappend."
+        data_type: integer
+    tags:
+      - MART
+      - store

@@ -1,0 +1,46 @@
+version: 2
+
+models:
+  - name: mart_product
+    description:
+      Product-level mart combining product metadata with aggregated transaction metrics.
+      Includes total and last-30-day revenue, as well as first/last transaction timestamps.
+    columns:
+      - name: id
+        description: "Unique ID of the product."
+        data_type: varchar
+        tests:
+          - not_null
+          - unique
+
+      - name: product_name
+        description: "Name of the product."
+        data_type: varchar
+
+      - name: total_amount_in_eur
+        description: "Total accepted transaction amount across all time (in EUR)."
+        data_type: numeric
+
+      - name: last_30d_amount_in_eur
+        description: "Accepted transaction amount in the last 30 days (in EUR)."
+        data_type: numeric
+
+      - name: transaction_cnt
+        description: "Total number of all transactions for the product."
+        data_type: integer
+
+      - name: accepted_transaction_cnt
+        description: "Total number of accepted transactions for the product."
+        data_type: integer
+
+      - name: first_transaction_happened
+        description: "Timestamp of the first accepted transaction for the product."
+        data_type: timestamp
+
+      - name: last_transaction_happened
+        description: "Timestamp of the most recent accepted transaction for the product."
+        data_type: timestamp
+
+    tags:
+      - MART
+      - product

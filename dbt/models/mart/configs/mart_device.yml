@@ -1,0 +1,32 @@
+version: 2
+
+models:
+  - name: mart_device
+    description: Product-level mart combining device metadata with aggregated transaction metrics.
+    columns:
+      - name: id
+        description: "Unique ID of the device."
+        data_type: varchar
+        tests:
+          - not_null
+          - unique
+
+      - name: type
+        description: "Device type."
+        data_type: varchar
+
+      - name: total_amount_in_eur
+        description: "Total accepted transaction amount across all time (in EUR)."
+        data_type: numeric
+
+      - name: total_transaction_cnt
+        description: "Total number of all transactions for the device."
+        data_type: integer
+
+      - name: accepted_transaction_cnt
+        description: "Total number of accepted transactions for the device."
+        data_type: integer
+
+    tags:
+      - MART
+      - device
