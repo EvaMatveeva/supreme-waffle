@@ -2,11 +2,11 @@
 
 ### How to Run It
 
-##### Prerequisites
+#### Prerequisites
 
 - Docker installed on your machine.
 
-##### Steps
+#### Steps
 
 1. Start Docker containers (Postgres + DBT):
 
@@ -70,7 +70,7 @@ Run tests for a specific model:
 dbt test --models <model_name>
 ```
 
-##### Other Useful Commands
+#### Other Useful Commands
 
 - `Ctrl + D` — Disconnect from container
 - `docker compose down` — Stop containers
@@ -91,7 +91,7 @@ dbt test --models <model_name>
   2. **Staging layer (`dbt_stg` schema):** Enriched, cleaned raw data. Snowflake schema.
   3. **Data Mart layer:** Denormalized data to answer analytical questions.
 
-##### Notes
+#### Notes
 
 - Sensitive data (e.g., card information) is masked.
 - Added tests for unique and not null fields.
